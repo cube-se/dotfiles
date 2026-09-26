@@ -12,6 +12,9 @@ function _echo() { echo -e "\n╓───── $1 \n╙───────�
 _echo "Updating packages"
 apt update -y && apt upgrade -y
 
+_echo "Updating rbenv install" 
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+
 _echo "Remove unused packages"
 while read -r p ; do sudo apt remove -y $p ; done < <(cat << "EOF"
 EOF
