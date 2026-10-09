@@ -13,7 +13,8 @@ _echo "Updating packages"
 apt update -y && apt upgrade -y
 
 _echo "Updating rbenv install" 
-git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+dir=$PWD
+cd ~/.rbenv/plugins/ruby-build && git pull >/dev/null 2>&1 && cd $dir
 
 _echo "Remove unused packages"
 while read -r p ; do sudo apt remove -y $p ; done < <(cat << "EOF"
